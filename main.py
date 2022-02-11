@@ -38,8 +38,8 @@ class Main:
                     search = getHashTable().search(str(i))[10]
                     hashtable = getHashTable().search(str(i))[9]
                     try:
-                        (hrs1, mins1, secs1) = getHashTable().search(str(i))[9].split(':')
-                        (hrs2, mins2, secs2) = getHashTable().search(str(i))[10].split(':')
+                        (hrs1, mins1, secs1) = hashtable.split(':')
+                        (hrs2, mins2, secs2) = search.split(':')
 
                     except ValueError:
                         pass
@@ -94,9 +94,9 @@ class Main:
                         ui.packStatus(i)
 
             except ValueError:
-                print('Invalid entry')
+                print('Not a valid entry.')
                 exit()
         else:
-            print('Invalid entry!')
+            print('Not a valid entry.')
             exit()
 

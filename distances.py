@@ -40,43 +40,22 @@ with open('sheets/address_data.csv') as csvfile_2:
     TRUCK1LIST, TRUCK2LIST, TRUCK3LIST = ([] for i in range(3))
     TRUCK1SORT, TRUCK2SORT, TRUCK3SORT = ([] for i in range(3))
 
-    ## =====================================greedy algorithm===========================================================
-    """
-    ABOUT ME : find_fastest_route :> O(n^2)
-    --------------------------------------------------------------------------------------------------
-    it uses the greedy technique to find the next closest location based on truck's current location.
 
-    there are  three parameter used:
-    1._packet_list  = is the list of packets to be sorted using greedy algorithm
-    2.truck_number  = is truck number to which the _packet_list is assigned to
-    3.curr_loc      = tracks the current location of given truck as it moves 
-
-    In first for loop:
-    it aims to find the shortest distance in _packet_list from the curr_distance 
-    the lowest_value variable  keeps updating until it finds the lowest one , 
-    and when it finds : assigns to closest_location
-
-    In second for loop:
-    the found closest_location will be appended to the new optimized (sorted) packet and index lists (outputs)
-    and also will be removed from unsorted list(input) for next iteration 
-
-    it repeats until the base case if condition  satisfies ,then it returns the empty  unsorted list.
-
-    """
+    ## Problem solving heuristic algorithm running at O(n^2)
     def find_fastest_route(_list, num, curr_location):
         if not len(_list):
             return _list
 
         lowest_value = 50.0
         location = 0
-
+        ## loops through input list O(n)
         for i in _list:
             value = int(i[1])
             if getCurrent(curr_location, value) <= lowest_value:
                 lowest_value = getCurrent(
                     curr_location, value)
                 location = value
-
+        ## loops through input list O(n)
         for i in _list:
             if getCurrent(curr_location, int(i[1])) == lowest_value:
                 if num == 1:
