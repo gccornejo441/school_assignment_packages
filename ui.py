@@ -1,10 +1,10 @@
 from extractor import getHashTable
 
-# reusable print  functions :> O(1)
+# Works in O(1) to display pack information.
 def packStatus(count):
-    PACK = getHashTable().search(str(count))[0]
-    LOAD = getHashTable().search(str(count))[9]
-    DELIVER = getHashTable().search(str(count))[10]
+    PACK = getHashTable().hotItem(str(count))[0]
+    LOAD = getHashTable().hotItem(str(count))[9]
+    DELIVER = getHashTable().hotItem(str(count))[10]
     print(
         '-' * 80,
          "\nPack id number: %s"
@@ -16,7 +16,6 @@ def packStatus(count):
 
 def quitMsg():
     return print("\nEnter 'quit' at anytime to quit session.\n")
-
 
 def numbers_to_strings(user_input):
         switcher = {
