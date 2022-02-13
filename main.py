@@ -11,11 +11,11 @@ class Main:
     ui.quitMsg()
     user_input = int(input("""\nFor all packet data enter enter: 1\nFor individual packet data enter: 2\nFor truck data: 3\n  """))
 
-    if (ui.numbers_to_strings(user_input) >= 4):
+    if (ui.numberSwitch(user_input) >= 4):
         print("Not a valid entry.  Please enter 1, 2, or option 3.")
         exit()
 
-    if (ui.numbers_to_strings(user_input) == 3):
+    if (ui.numberSwitch(user_input) == 3):
         packages.total_recall()
         ant_input = str(input("\nType quit to terminate the program\n\nHit the enter key to continue.\n\n"))
         if(ant_input == "quit"):

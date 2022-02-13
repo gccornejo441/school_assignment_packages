@@ -9,13 +9,13 @@ def insert(key, item):
     table.numList(key).append(key_value)
     return True
 
-with open('sheets/packets_data.csv') as csvfile:
+with open('sheets/Packets.csv') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
-
-    truckOne = []  # packets list assigned to truck 1
-    truckTwo = []  # packets list assigned to truck 2
-    truckThree = []  # packets list assigned to truck 3
-
+    # List for packs to assign to trucks
+    truckOne = []  
+    truckTwo = []  
+    truckThree = []
+      
     # Reads from CSV at Big O(n)
     for row in reader:
         id = row[0]

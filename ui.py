@@ -17,7 +17,7 @@ def packStatus(count):
 def quitMsg():
     return print("\nEnter 'quit' at anytime to quit session.\n")
 
-def numbers_to_strings(user_input):
+def numberSwitch(user_input):
         switcher = {
             1: 1,
             2: 2,

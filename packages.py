@@ -12,13 +12,13 @@ for index, value in enumerate(extractor.getTruckList()):
 
 # Loops through twice at O(n^2) for set truck delivery
 for index, outer in enumerate(schema.kellie):
-    for inner in distances.get_address():
+    for inner in distances.getAddress():
         if (outer[2] == inner[2]):
             schema.kellieDist.append(outer[0])
             schema.kellie[index][1] = inner[0]
 
 # Call greedy  algorithm to sort packages for first truck O(n^2)
-distances.find_fastest_route(schema.kellie, 1, 0)
+distances.routeLocater(schema.kellie, 1, 0)
 
 truckIdx[0] = distances.getFirstIndexList(1)
 truckIdx[1] = distances.getFirstIndexList(0)
@@ -28,8 +28,8 @@ for index in range(len(truckIdx[0])):
     try:
         totalDistance[0] = distances.getDistance(int(truckIdx[0][index]), int(truckIdx[0][index + 1]), totalDistance[0])
 
-        deliver_package = distances.get_time(distances.getCurrent(int(truckIdx[0][index]), int(truckIdx[0][index + 1])), ['8:00:00'])
-        truckIdx[1][index][10] = (str(deliver_package))
+        packsOut = distances.getTime(distances.getCurrent(int(truckIdx[0][index]), int(truckIdx[0][index + 1])), ['8:00:00'])
+        truckIdx[1][index][10] = (str(packsOut))
         extractor.getHashTable().adjuster(int(truckIdx[1][index][0]), schema.kellie)
     except IndexError:
         pass
@@ -43,13 +43,13 @@ for index, value in enumerate(extractor.assignPacks()):
 
 # Loops through twice at O(n^2) for set truck delivery
 for index, outer in enumerate(schema.wilson):
-    for inner in distances.get_address():
+    for inner in distances.getAddress():
         if (outer[2] == inner[2]):
             schema.wilsonDist.append(outer[0])
             schema.wilson[index][1] = inner[0]
 
 # Call greedy  algorithm to sort packages for Second truck
-distances.find_fastest_route(schema.wilson, 2, 0)
+distances.routeLocater(schema.wilson, 2, 0)
 
 # Big O(n) for loop through truck load [array]
 truckIdx[2] = distances.getSecIndexList(1)
@@ -59,9 +59,9 @@ for index in range(len(truckIdx[2])):
     try:
         totalDistance[1] = distances.getDistance( int(truckIdx[2][index]), int(truckIdx[2][index + 1]), totalDistance[1])
 
-        deliver_package = distances.get_time(
+        packsOut = distances.getTime(
             distances.getCurrent(int(truckIdx[2][index]), int(truckIdx[2][index + 1])), ['9:10:00'])
-        truckIdx[3][index][10] = (str(deliver_package))
+        truckIdx[3][index][10] = (str(packsOut))
         extractor.getHashTable().adjuster(int(truckIdx[3][index][0]), schema.wilson)
     except IndexError:
         pass
@@ -74,13 +74,13 @@ for index, value in enumerate(extractor.getPacks()):
 
 # Will run through enumerated list @ O(n^2) to compare delivery address to address list
 for index, outer in enumerate(schema.subyam):
-    for inner in distances.get_address():
+    for inner in distances.getAddress():
         if (outer[2] == inner[2]):
             schema.subyamDist.append(outer[0])
             schema.subyam[index][1] = inner[0]
 
 # Call greedy  algorithm to sort packages for Third truck
-distances.find_fastest_route(schema.subyam, 3, 0)
+distances.routeLocater(schema.subyam, 3, 0)
 total_distance_tr3 = 0
 
 # Big O(n) for loop through truck load [array]
@@ -90,8 +90,8 @@ for index in range(len(truckIdx[4])):
     try:
         totalDistance[2] = distances.getDistance(int(truckIdx[4][index]), int(truckIdx[4][index + 1]), totalDistance[2])
 
-        deliver_package = distances.get_time(distances.getCurrent(int(truckIdx[4][index]),int(truckIdx[4][index + 1])), ['11:00:00'])
-        truckIdx[5][index][10] = (str(deliver_package))
+        packsOut = distances.getTime(distances.getCurrent(int(truckIdx[4][index]),int(truckIdx[4][index + 1])), ['11:00:00'])
+        truckIdx[5][index][10] = (str(packsOut))
         extractor.getHashTable().adjuster(int(truckIdx[5][index][0]), schema.subyam)
     except IndexError:
         pass
