@@ -1,3 +1,7 @@
+#Student Name: Gabriel Cornejo
+#Student ID: 001681157
+
+
 from extractor import getHashTable
 import datetime, ui, packages
 
