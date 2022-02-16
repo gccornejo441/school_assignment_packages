@@ -9,7 +9,7 @@ def insert(key, item):
     table.numList(key).append(key_value)
     return True
 
-with open('sheets/Packets.csv') as csvfile:
+with open('sheets/packs.csv') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     # List for packs to assign to trucks
     truckOne = []  

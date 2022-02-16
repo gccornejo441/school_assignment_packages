@@ -1,10 +1,10 @@
 import csv
 import datetime
 
-with open('sheets/Distances.csv') as csvfile_1:
+with open('sheets/distances.csv') as csvfile_1:
     DISTCSV = list(csv.reader(csvfile_1, delimiter=','))
 
-with open('sheets/Points.csv') as csvfile_2:
+with open('sheets/points.csv') as csvfile_2:
     DISTNAMES = list(csv.reader(csvfile_2, delimiter=','))
 
 

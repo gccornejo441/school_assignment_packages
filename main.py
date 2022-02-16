@@ -5,7 +5,7 @@
 from extractor import getHashTable
 import datetime, ui, packages
 
-MOVE = 'ON THE MOVE'
+MOVE = 'EN ROUTE'
 HUB = '@ HUB'
 DELIVERD = 'DELIVERED @'
 
@@ -52,19 +52,19 @@ class Main:
 
                     # Determine which packages have left the hub
                     if (deltaTime >= input_time):
-                        search = HUB
+                        getHashTable().hotItem(str(i))[10] = HUB
                         hashtable = hashtable
                         ui.packStatus(i)
                     # Determine which packages have left but have not been delivered
                     elif (deltaTime <= input_time):
                         if (input_time < datetime.timedelta(hours=int(hrs2), minutes=int(mins2), seconds=int(secs2))):
-                            search = MOVE
+                            getHashTable().hotItem(str(i))[10] = MOVE
                             hashtable = hashtable
                             ui.packStatus(i)  
 
                         # If pak has been delivered then show contents.
                         else:
-                            search = DELIVERD + " " + search
+                            getHashTable().hotItem(str(i))[10] = DELIVERD + " " + getHashTable().hotItem(str(i))[10]
                             hashtable = hashtable
                             ui.packStatus(i)  
                 break
@@ -84,16 +84,16 @@ class Main:
                 deltaTime = datetime.timedelta(hours=int(hrs), minutes=int(mins), seconds=int(secs))
                 # Loops through packages and dictates which packets are left and need to be delivered
                 if (deltaTime >= input_time):
-                    search = HUB
+                    getHashTable().hotItem(str(i))[10] = HUB
                     hashtable = getHashTable().hotItem(str(i))[9]
                     ui.packStatus(i)
                 elif (deltaTime <= input_time):
                     if (input_time < deltaTime):
-                        search = MOVE
+                        getHashTable().hotItem(str(i))[10] = MOVE
                         hashtable = getHashTable().hotItem(str(i))[9]
                         ui.packStatus(i)
                     else:
-                        search = DELIVERD + search
+                        getHashTable().hotItem(str(i))[10] = DELIVERD + getHashTable().hotItem(str(i))[10]
                         hashtable = getHashTable().hotItem(str(i))[9]
                         ui.packStatus(i)
 
